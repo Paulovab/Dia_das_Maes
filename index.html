@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   
   <style>
-    /* Reset e Configurações de Fundo */
     * {
       margin: 0;
       padding: 0;
@@ -15,7 +14,7 @@
     }
 
     body {
-      /* Adicionando a foto4.jpg como fundo de todas as páginas */
+      /* Fundo com foto4.jpg */
       background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('./assets/fotos/foto4.jpg');
       background-size: cover;
       background-position: center;
@@ -31,7 +30,6 @@
       min-height: 100vh;
     }
 
-    /* Tela Inicial */
     .hero-inicial {
       height: 100vh;
       width: 100%;
@@ -40,8 +38,7 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      /* Fundo da tela inicial com transparência para ver a foto4 ao fundo */
-      background: rgba(255, 255, 255, 0.85); 
+      background: rgba(255, 255, 255, 0.9); 
       padding: 20px;
       position: fixed;
       z-index: 2000;
@@ -71,7 +68,6 @@
       100% { transform: scale(1); }
     }
 
-    /* Conteúdo Principal */
     #conteudo {
       display: none;
       width: 100%;
@@ -79,20 +75,18 @@
       padding: 20px;
       text-align: center;
       animation: fadeIn 1.5s ease;
-      /* Garante que o conteúdo role sobre o fundo fixo */
       position: relative;
       z-index: 10;
     }
 
     .cartao-crianca {
-      background: rgba(255, 255, 255, 0.9); /* Branco semi-transparente para ler melhor */
+      background: rgba(255, 255, 255, 0.9);
       padding: 35px 25px;
       border-radius: 15px;
       box-shadow: 0 15px 35px rgba(0,0,0,0.1);
       margin-top: 40px;
       margin-bottom: 30px;
-      border: 1px solid rgba(224, 242, 241, 0.5);
-      backdrop-filter: blur(5px); /* Efeito de vidro fosco */
+      backdrop-filter: blur(5px);
     }
 
     h1 {
@@ -103,12 +97,11 @@
     }
 
     .mensagem-fofa {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       line-height: 1.6;
       color: #222;
     }
 
-    /* Slideshow */
     .slider-container {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -130,14 +123,12 @@
       width: 100%;
       height: 100%;
       object-fit: cover; 
-      background-color: #f9f9f9; 
       opacity: 0;
       transition: opacity 1s ease-in-out;
     }
 
     .slide.active { opacity: 1; }
 
-    /* Partículas */
     .party {
       position: fixed;
       z-index: 1000;
@@ -160,19 +151,14 @@
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-size: 1.2rem;
-      text-shadow: 1px 1px 2px white; /* Sombra branca para ler no fundo */
-    }
-
-    @media (max-width: 480px) {
-      h1 { font-size: 1.8rem; }
-      .mensagem-fofa { font-size: 1.05rem; }
+      color: #000;
     }
   </style>
 </head>
 <body>
 
   <section id="intro" class="hero-inicial">
-    <h1 style="font-family: 'Playfair Display', serif;">Para uma pessoa especial...</h1>
+    <h1>Para uma pessoa especial...</h1>
     <button class="btn-surpresa" onclick="abrirSurpresa()">Clique para abrir ✨</button>
   </section>
 
@@ -180,16 +166,15 @@
     <div class="cartao-crianca">
       <h1>Feliz Dia das Mães!</h1>
       <p class="mensagem-fofa">
-        Hoje é um dia especial para celebrar todo o amor que você nos dá. <br><br>
-        Obrigado por cuidar de nós com tanto carinho e por tornar tudo mais feliz. Você merece o melhor dia de todos! <br><br>
-        Te amamos muito! ❤️
+        Obrigado por ser minha mãe, minha amiga e por me ensinar tantas coisas nesses 11 anos. <br><br>
+        Eu te amo muito e espero que seu dia seja incrível, igual a você! ❤️
       </p>
     </div>
 
     <div class="slider-container" id="meuSlider"></div>
 
     <footer>
-      Com todo o nosso amor! 🌼
+      Com todo o meu amor! 🌼
     </footer>
   </div>
 
@@ -198,20 +183,18 @@
   </audio>
 
   <script>
-    // Mantendo a foto 4 no carrossel também, se desejar
-    const fotos = [
-      './assets/fotos/foto1.jpg',
-      './assets/fotos/foto2.jpg',
-      './assets/fotos/foto3.jpg',
-      './assets/fotos/foto4.jpg'
-    ];
+    // Agora o slide busca da foto1 até a foto10
+    const fotos = [];
+    for (let i = 1; i <= 10; i++) {
+      fotos.push(`./assets/fotos/foto${i}.jpg`);
+    }
 
     function abrirSurpresa() {
       document.getElementById('intro').style.display = 'none';
       document.getElementById('conteudo').style.display = 'block';
       
       const audio = document.getElementById('musica');
-      audio.play().catch(e => console.log("Áudio aguardando..."));
+      audio.play().catch(e => console.log("Áudio aguardando interação..."));
 
       setInterval(createCelebrationItem, 250);
     }
@@ -221,13 +204,15 @@
       const img = document.createElement('img');
       img.src = src;
       img.className = index === 0 ? 'slide active' : 'slide';
+      // Tratamento para caso alguma foto (ex: 5 a 10) não exista na pasta
+      img.onerror = function() { this.remove(); }; 
       container.appendChild(img);
     });
 
     let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
     setInterval(() => {
-      if(slides.length > 0) {
+      const slides = document.querySelectorAll('.slide');
+      if(slides.length > 1) {
         slides[currentSlide].classList.remove('active');
         currentSlide = (currentSlide + 1) % slides.length;
         slides[currentSlide].classList.add('active');
