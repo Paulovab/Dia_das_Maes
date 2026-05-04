@@ -1,1 +1,230 @@
-<!DOCTYPE html><html><body>Projeto Dia das Mães</body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feliz Dia das Mães</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #e8f4f8, #f8fcfd);
+      overflow-x: hidden;
+      color: #5a3d46;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 3rem;
+      animation: fadeUp 1.5s ease;
+    }
+
+    .message {
+      margin-top: 20px;
+      max-width: 700px;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      animation: fadeUp 2s ease;
+    }
+
+    .heart {
+      position: absolute;
+      color: rgba(255, 80, 80, 0.35);
+      font-size: 22px;
+      animation: float 10s linear infinite;
+      position: fixed;
+    }
+
+    .gallery {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .gallery h2 {
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    .slider {
+      width: 90%;
+      max-width: 800px;
+      height: 450px;
+      margin: auto;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+      position: relative;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 1rem;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(100vh) rotate(0deg);
+      }
+      to {
+        transform: translateY(-20vh) rotate(360deg);
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .slider {
+        height: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section id="intro" class="hero">
+    <h1>✨ Tenho uma surpresa para você ✨</h1>
+    <button onclick="abrirSurpresa()" style="margin-top:30px;padding:15px 30px;border:none;border-radius:50px;font-size:1.2rem;cursor:pointer;background:#ff6b9a;color:white;">Clique aqui 💖</button>
+  </section>
+
+  <div id="conteudo" style="display:none; max-width:1100px; margin:auto; padding:20px;">
+    <div style="display:flex; flex-wrap:wrap; gap:30px; align-items:center; justify-content:center; min-height:100vh;">
+      <div style="flex:1; min-width:320px;">
+
+  <section class="hero">
+    <h1>🌷 Feliz Dia das Mães 🌷</h1>
+    <p class="message">
+      Mãe, sua força inspira, seu carinho transforma, e seu amor faz do mundo um lugar melhor.
+      Hoje celebramos sua dedicação, sua ternura e tudo aquilo que você representa.
+      Obrigado por ser luz em cada momento.
+    </p>
+  </section>
+
+  </div>
+      <div style="flex:1; min-width:320px;">
+      <section class="gallery">
+    <h2>Nossos Momentos 💖</h2>
+    <div class="slider">
+      <img class="slide active" src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2" />
+      <img class="slide" src="https://images.unsplash.com/photo-1511895426328-dc8714191300" />
+      <img class="slide" src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9" />
+      <img class="slide" src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef" />
+    </div>
+  </section>
+
+  </div>
+
+        </div>
+    </div>
+
+  <footer>
+    Feito com amor ❤️
+  </footer>
+
+  <script>
+    function abrirSurpresa() {
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('conteudo').style.display = 'block';
+    }
+
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 3000);
+
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 5 + 4) + 's';
+      heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
+            heart.style.top = '100vh';
+      heart.style.zIndex = '999';
+      heart.style.pointerEvents = 'none';
+      document.body.appendChild(heart);
+    }
+  </script>
+
+  <script>
+    // Carrega automaticamente imagens da pasta ./assets/fotos/
+    // e música da pasta ./assets/musica/
+    // Para publicar, mantenha a estrutura:
+    // /assets/fotos/foto1.jpg
+    // /assets/fotos/foto2.png
+    // /assets/musica/trilha.mp3
+
+    const imageFiles = [
+      './assets/fotos/foto1.jpg',
+      './assets/fotos/foto2.jpg',
+      './assets/fotos/foto3.jpg',
+      './assets/fotos/foto4.jpg'
+    ];
+
+    const slider = document.querySelector('.slider');
+    slider.innerHTML = '';
+
+    imageFiles.forEach((src, index) => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.className = index === 0 ? 'slide active' : 'slide';
+      slider.appendChild(img);
+    });
+
+    const audio = document.createElement('audio');
+    audio.src = './assets/musica/trilha.mp3';
+    audio.autoplay = true;
+    audio.loop = true;
+    audio.controls = true;
+    audio.style.position = 'fixed';
+    audio.style.bottom = '20px';
+    audio.style.right = '20px';
+    document.body.appendChild(audio);
+  </script>
+</body>
+</html>
