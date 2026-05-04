@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   
   <style>
+    /* Reset e Configurações de Fundo */
     * {
       margin: 0;
       padding: 0;
@@ -14,15 +15,20 @@
     }
 
     body {
-      background-color: #eefafb;
-      background-image: radial-gradient(#c2e9eb 1px, transparent 1px);
-      background-size: 30px 30px;
-      color: #00796b;
+      /* Adicionando a foto4.jpg como fundo de todas as páginas */
+      background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('./assets/fotos/foto4.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      
+      color: #004d40;
       font-family: 'Lato', sans-serif;
       overflow-x: hidden;
       display: flex;
       flex-direction: column;
       align-items: center;
+      min-height: 100vh;
     }
 
     /* Tela Inicial */
@@ -34,7 +40,8 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: #ffffff;
+      /* Fundo da tela inicial com transparência para ver a foto4 ao fundo */
+      background: rgba(255, 255, 255, 0.85); 
       padding: 20px;
       position: fixed;
       z-index: 2000;
@@ -72,15 +79,20 @@
       padding: 20px;
       text-align: center;
       animation: fadeIn 1.5s ease;
+      /* Garante que o conteúdo role sobre o fundo fixo */
+      position: relative;
+      z-index: 10;
     }
 
     .cartao-crianca {
-      background: white;
+      background: rgba(255, 255, 255, 0.9); /* Branco semi-transparente para ler melhor */
       padding: 35px 25px;
       border-radius: 15px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      margin-top: 40px;
       margin-bottom: 30px;
-      border: 1px solid #e0f2f1;
+      border: 1px solid rgba(224, 242, 241, 0.5);
+      backdrop-filter: blur(5px); /* Efeito de vidro fosco */
     }
 
     h1 {
@@ -93,31 +105,31 @@
     .mensagem-fofa {
       font-size: 1.15rem;
       line-height: 1.6;
-      color: #444;
+      color: #222;
     }
 
-    /* Slideshow Corrigido */
+    /* Slideshow */
     .slider-container {
       width: 100%;
-      aspect-ratio: 1 / 1; /* Mantém o container quadrado */
+      aspect-ratio: 1 / 1;
       max-width: 450px;
       margin: 0 auto 30px auto;
       background: #fff;
       border: 10px solid white;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
       position: relative;
       overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
+      border-radius: 10px;
     }
 
     .slide {
       position: absolute;
       width: 100%;
       height: 100%;
-      /* O segredo para não desconfigurar: */
-      object-fit: contain; 
+      object-fit: cover; 
       background-color: #f9f9f9; 
       opacity: 0;
       transition: opacity 1s ease-in-out;
@@ -148,6 +160,7 @@
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-size: 1.2rem;
+      text-shadow: 1px 1px 2px white; /* Sombra branca para ler no fundo */
     }
 
     @media (max-width: 480px) {
@@ -185,6 +198,7 @@
   </audio>
 
   <script>
+    // Mantendo a foto 4 no carrossel também, se desejar
     const fotos = [
       './assets/fotos/foto1.jpg',
       './assets/fotos/foto2.jpg',
