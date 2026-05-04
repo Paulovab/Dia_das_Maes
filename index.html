@@ -15,11 +15,10 @@
     }
 
     body {
-      background-color: #e0f7fa; /* Azul claro delicado */
-      /* Fundo com "rabiscos" suaves */
+      background-color: #e0f7fa; 
       background-image: radial-gradient(#b2ebf2 0.5px, transparent 0.5px);
       background-size: 20px 20px;
-      color: #00796b; /* Verde água escuro para leitura */
+      color: #00796b;
       font-family: 'Short+Stack', 'Comic Sans MS', cursive;
       overflow-x: hidden;
     }
@@ -33,6 +32,7 @@
       align-items: center;
       text-align: center;
       background: #ffffff;
+      padding: 20px;
     }
 
     .btn-surpresa {
@@ -59,7 +59,7 @@
     /* Conteúdo Principal */
     #conteudo {
       display: none;
-      padding: 20px;
+      padding: 10px;
       max-width: 900px;
       margin: auto;
       animation: fadeIn 2s;
@@ -67,39 +67,41 @@
 
     .cartao-crianca {
       background: white;
-      padding: 30px;
+      padding: 20px; /* Reduzi o padding interno */
       border: 3px solid #80cbc4;
       border-radius: 20px;
-      box-shadow: 10px 10px 0px #b2ebf2;
-      margin: 40px 10px;
-      position: relative;
+      box-shadow: 6px 6px 0px #b2ebf2;
+      margin: 15px auto; /* Margens menores para subir o conteúdo */
+      max-width: 500px;
     }
 
     h1 {
       font-family: 'Indie Flower', cursive;
-      font-size: 3.5rem;
-      margin-bottom: 20px;
+      font-size: 2.2rem; /* Tamanho menor para o título */
+      margin-bottom: 10px;
       color: #009688;
+      text-align: center;
     }
 
     .mensagem-fofa {
-      font-size: 1.6rem;
-      line-height: 1.5;
+      font-size: 1.1rem; /* Texto levemente menor para economizar espaço */
+      line-height: 1.4;
       color: #444;
+      text-align: center;
     }
 
     /* Slideshow */
     .slider-container {
       width: 100%;
-      max-width: 500px;
-      height: 400px;
-      margin: 30px auto;
-      border: 10px solid white;
+      max-width: 350px; /* Reduzi a largura máxima para mobile */
+      height: 350px; /* Altura fixa proporcional */
+      margin: 15px auto;
+      border: 8px solid white;
       outline: 3px solid #80cbc4;
       border-radius: 10px;
       position: relative;
       overflow: hidden;
-      transform: rotate(2deg);
+      transform: rotate(-1deg);
     }
 
     .slide {
@@ -136,14 +138,17 @@
 
     footer {
       text-align: center;
-      padding: 50px;
+      padding: 20px;
       font-family: 'Indie Flower', cursive;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
 
-    @media (max-width: 600px) {
-      h1 { font-size: 2.5rem; }
-      .slider-container { height: 300px; }
+    /* Ajustes específicos para telas muito pequenas */
+    @media (max-width: 400px) {
+      h1 { font-size: 1.8rem; }
+      .mensagem-fofa { font-size: 1rem; }
+      .slider-container { height: 280px; }
+      .btn-surpresa { padding: 15px 30px; font-size: 1.2rem; }
     }
   </style>
 </head>
@@ -151,7 +156,7 @@
 
   <!-- TELA INICIAL -->
   <section id="intro" class="hero-inicial">
-    <h1 style="font-size: 2.5rem;">Ei, mãe! <br> Preparei uma surpresa especial no computador! 💻✨</h1>
+    <h1 style="font-size: 2rem;">Ei, mãe! <br> Preparei uma surpresa especial! ✨</h1>
     <button class="btn-surpresa" onclick="abrirSurpresa()">CLIQUE PARA ABRIR! 🎁</button>
   </section>
 
@@ -160,10 +165,9 @@
     <div class="cartao-crianca">
       <h1>Feliz Dia das Mães! 🌼</h1>
       <p class="mensagem-fofa">
-        Oi, mamãe! Eu fiz essa página para dizer que você é a <b>melhor mãe do mundo inteiro!</b> 🌍 <br><br>
-        Obrigado por sempre me ajudar com as coisas da escola, por jogar comigo e por ser tão carinhosa. 
-        Você é meu exemplo e eu tenho muita sorte de ser seu filho. <br><br>
-        Te amo mil milhões! ❤️
+        Oi, mamãe! Eu fiz essa página para dizer que você é a <b>melhor mãe do mundo inteiro!</b> 🌍 <br>
+        Obrigado por sempre me ajudar, por jogar comigo e por ser tão carinhosa. 
+        Você é meu exemplo! Te amo mil milhões! ❤️
       </p>
     </div>
 
@@ -181,7 +185,6 @@
   </audio>
 
   <script>
-    // Configurações das fotos
     const fotos = [
       './assets/fotos/foto1.jpg',
       './assets/fotos/foto2.jpg',
@@ -194,7 +197,7 @@
       document.getElementById('conteudo').style.display = 'block';
       
       const audio = document.getElementById('musica');
-      audio.play().catch(e => console.log("O navegador bloqueou o som inicial."));
+      audio.play().catch(e => console.log("Som bloqueado."));
 
       setInterval(createHeart, 300);
     }
@@ -220,11 +223,11 @@
 
     function createHeart() {
       const heart = document.createElement('div');
-      const icons = ['❤️', '✨', '🍃', '⭐', '🎈'];
+      const icons = ['❤️', '✨', '🌼', '⭐', '🎈'];
       heart.classList.add('heart');
       heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
       heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+      heart.style.fontSize = Math.random() * 15 + 15 + 'px';
       heart.style.animationDuration = Math.random() * 3 + 2 + 's';
       heart.style.opacity = Math.random();
       
