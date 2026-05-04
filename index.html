@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PARA A MELHOR MAMÃE DO MUNDO!</title>
-  <!-- Importando uma fonte que parece letra de criança/escolar -->
-  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Short+Stack&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   
   <style>
     * {
@@ -19,7 +18,7 @@
       background-image: radial-gradient(#b2ebf2 0.5px, transparent 0.5px);
       background-size: 20px 20px;
       color: #00796b;
-      font-family: 'Short+Stack', 'Comic Sans MS', cursive;
+      font-family: 'Lato', sans-serif;
       overflow-x: hidden;
     }
 
@@ -37,23 +36,31 @@
 
     .btn-surpresa {
       margin-top: 30px;
-      padding: 20px 40px;
-      border: 4px dashed #4db6ac;
-      border-radius: 50px;
-      font-size: 1.5rem;
-      font-family: 'Indie Flower', cursive;
+      padding: 18px 35px;
+      border: 2px solid #4db6ac;
+      border-radius: 4px;
+      font-size: 1.2rem;
+      font-family: 'Lato', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
       font-weight: bold;
       cursor: pointer;
-      background: #f0fdfa;
+      background: transparent;
       color: #00897b;
-      transition: transform 0.3s;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+      animation: pulseBtn 2s infinite; /* Animação de pulso */
+    }
+
+    @keyframes pulseBtn {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(77, 182, 172, 0.4); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(77, 182, 172, 0); }
+      100% { transform: scale(1); }
     }
 
     .btn-surpresa:hover {
-      transform: scale(1.1) rotate(-3deg);
       background: #4db6ac;
       color: white;
+      animation: none;
     }
 
     /* Conteúdo Principal */
@@ -62,46 +69,51 @@
       padding: 10px;
       max-width: 900px;
       margin: auto;
-      animation: fadeIn 2s;
     }
 
     .cartao-crianca {
       background: white;
-      padding: 30px; /* Aumentei o respiro interno */
-      border: 3px solid #80cbc4;
-      border-radius: 20px;
-      box-shadow: 8px 8px 0px #b2ebf2;
-      margin: 20px auto; 
-      max-width: 600px; /* Aumentei a largura máxima do cartão */
+      padding: 40px; 
+      border: 1px solid #b2ebf2;
+      border-radius: 8px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+      margin: 30px auto; 
+      max-width: 600px; 
+      animation: slideUp 1.2s ease-out; /* Entrada animada */
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     h1 {
-      font-family: 'Indie Flower', cursive;
-      font-size: 2.8rem; /* Título um pouco maior */
-      margin-bottom: 15px;
-      color: #009688;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem; 
+      margin-bottom: 20px;
+      color: #00796b;
       text-align: center;
     }
 
     .mensagem-fofa {
-      font-size: 1.3rem; /* Fonte da mensagem aumentada para destaque */
-      line-height: 1.5;
-      color: #444;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #333;
       text-align: center;
     }
 
-    /* Slideshow */
+    /* Slideshow com moldura comemorativa */
     .slider-container {
       width: 100%;
-      max-width: 400px; /* Aumentei levemente para equilibrar com o cartão */
-      height: 380px; 
-      margin: 20px auto;
-      border: 8px solid white;
-      outline: 3px solid #80cbc4;
-      border-radius: 10px;
+      max-width: 450px; 
+      height: 400px; 
+      margin: 30px auto;
+      border: 12px solid white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      border-radius: 4px;
       position: relative;
       overflow: hidden;
-      transform: rotate(-1deg);
+      animation: fadeIn 2s ease-in;
     }
 
     .slide {
@@ -110,21 +122,32 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      transition: opacity 1s ease-in-out;
+      transition: opacity 1.5s ease-in-out;
     }
 
     .slide.active {
       opacity: 1;
     }
 
-    /* Itens voando */
+    /* Confetes e Elementos Festivos */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      z-index: 1000;
+      animation: confettiFall linear forwards;
+    }
+
     .heart {
       position: fixed;
       top: -10%;
       z-index: 999;
-      user-select: none;
-      pointer-events: none;
       animation: fall linear forwards;
+    }
+
+    @keyframes confettiFall {
+      0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
     }
 
     @keyframes fall {
@@ -138,20 +161,18 @@
 
     footer {
       text-align: center;
-      padding: 25px;
-      font-family: 'Indie Flower', cursive;
-      font-size: 1.4rem;
+      padding: 30px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: #00796b;
+      animation: fadeIn 3s;
     }
 
-    /* Ajustes específicos para telas de celular */
     @media (max-width: 600px) {
-      .cartao-crianca {
-        width: 95%;
-        padding: 25px;
-      }
-      h1 { font-size: 2.2rem; }
-      .mensagem-fofa { font-size: 1.15rem; }
-      .slider-container { height: 320px; max-width: 90%; }
+      .cartao-crianca { width: 90%; padding: 30px 20px; }
+      h1 { font-size: 2rem; }
+      .slider-container { height: 350px; }
     }
   </style>
 </head>
@@ -159,27 +180,25 @@
 
   <!-- TELA INICIAL -->
   <section id="intro" class="hero-inicial">
-    <h1 style="font-size: 2rem;">Ei, mãe! <br> Preparei uma surpresa especial! ✨</h1>
-    <button class="btn-surpresa" onclick="abrirSurpresa()">CLIQUE PARA ABRIR! 🎁</button>
+    <h1 style="font-family: 'Playfair Display', serif;">Para a melhor mãe do mundo</h1>
+    <button class="btn-surpresa" onclick="abrirSurpresa()">Abrir Celebração</button>
   </section>
 
   <!-- CONTEÚDO QUE APARECE -->
   <div id="conteudo">
     <div class="cartao-crianca">
-      <h1>Feliz Dia das Mães! 🌼</h1>
+      <h1>Feliz Dia das Mães! ✨</h1>
       <p class="mensagem-fofa">
         Oi, mamãe! Eu fiz essa página para dizer que você é a <b>melhor mãe do mundo inteiro!</b> 🌍 <br><br>
         Obrigado por sempre me ajudar, por jogar comigo e por ser tão carinhosa. 
-        Você é meu exemplo! Te amo mil milhões! ❤️
+        Você é meu grande exemplo! Te amo mil milhões! ❤️
       </p>
     </div>
 
-    <div class="slider-container" id="meuSlider">
-        <!-- As fotos vão entrar aqui pelo JavaScript -->
-    </div>
+    <div class="slider-container" id="meuSlider"></div>
 
     <footer>
-      Com muito amor, do seu filho(a)! 🧒🎈
+      Com todo o meu amor, do seu filho(a).
     </footer>
   </div>
 
@@ -200,9 +219,11 @@
       document.getElementById('conteudo').style.display = 'block';
       
       const audio = document.getElementById('musica');
-      audio.play().catch(e => console.log("Som bloqueado."));
+      audio.play().catch(e => console.log("Áudio aguardando interação."));
 
-      setInterval(createHeart, 300);
+      // Inicia chuvas festivas
+      setInterval(createHeart, 400);
+      setInterval(createConfetti, 100);
     }
 
     const container = document.getElementById('meuSlider');
@@ -215,30 +236,39 @@
 
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
-    
     setInterval(() => {
       if(slides.length > 0) {
         slides[currentSlide].classList.remove('active');
         currentSlide = (currentSlide + 1) % slides.length;
         slides[currentSlide].classList.add('active');
       }
-    }, 3000);
+    }, 3500);
 
     function createHeart() {
       const heart = document.createElement('div');
-      const icons = ['❤️', '✨', '🌼', '⭐', '🎈'];
+      const icons = ['❤️', '✨', '🌼', '🌸'];
       heart.classList.add('heart');
       heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
       heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.fontSize = Math.random() * 15 + 15 + 'px';
-      heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-      heart.style.opacity = Math.random();
-      
+      heart.style.fontSize = Math.random() * 15 + 10 + 'px';
+      heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+      heart.style.opacity = Math.random() * 0.7 + 0.3;
       document.body.appendChild(heart);
-      
-      setTimeout(() => {
-        heart.remove();
-      }, 5000);
+      setTimeout(() => heart.remove(), 7000);
+    }
+
+    function createConfetti() {
+      const confetti = document.createElement('div');
+      const colors = ['#4db6ac', '#80cbc4', '#b2ebf2', '#ffffff', '#00796b'];
+      confetti.classList.add('confetti');
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.width = Math.random() * 8 + 5 + 'px';
+      confetti.style.height = confetti.style.width;
+      confetti.style.animationDuration = Math.random() * 2 + 2 + 's';
+      confetti.style.opacity = Math.random();
+      document.body.appendChild(confetti);
+      setTimeout(() => confetti.remove(), 4000);
     }
   </script>
 </body>
