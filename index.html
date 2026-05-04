@@ -3,72 +3,103 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Feliz Dia das Mães</title>
+  <title>PARA A MELHOR MAMÃE DO MUNDO!</title>
+  <!-- Importando uma fonte que parece letra de criança/escolar -->
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Short+Stack&display=swap" rel="stylesheet">
+  
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
     }
 
     body {
-      background: linear-gradient(135deg, #e8f4f8, #f8fcfd);
+      background-color: #ffeff5;
+      /* Fundo com "rabiscos" de corações */
+      background-image: radial-gradient(#ffc2d1 0.5px, transparent 0.5px);
+      background-size: 20px 20px;
+      color: #d81b60;
+      font-family: 'Short+Stack', 'Comic Sans MS', cursive;
       overflow-x: hidden;
-      color: #5a3d46;
     }
 
-    .hero {
-      min-height: 100vh;
+    /* Tela Inicial */
+    .hero-inicial {
+      height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
+      background: #fff;
+    }
+
+    .btn-surpresa {
+      margin-top: 30px;
+      padding: 20px 40px;
+      border: 4px dashed #ff6b9a;
+      border-radius: 50px;
+      font-size: 1.5rem;
+      font-family: 'Indie Flower', cursive;
+      font-weight: bold;
+      cursor: pointer;
+      background: #fff1f5;
+      color: #ff4081;
+      transition: transform 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .btn-surpresa:hover {
+      transform: scale(1.1) rotate(-3deg);
+      background: #ff6b9a;
+      color: white;
+    }
+
+    /* Conteúdo Principal */
+    #conteudo {
+      display: none;
       padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      animation: fadeIn 2s;
+    }
+
+    .cartao-crianca {
+      background: white;
+      padding: 30px;
+      border: 3px solid #ff80ab;
+      border-radius: 20px;
+      box-shadow: 10px 10px 0px #ffc2d1;
+      margin: 40px 10px;
       position: relative;
     }
 
     h1 {
-      font-size: 3rem;
-      animation: fadeUp 1.5s ease;
+      font-family: 'Indie Flower', cursive;
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+      color: #e91e63;
     }
 
-    .message {
-      margin-top: 20px;
-      max-width: 700px;
-      font-size: 1.2rem;
-      line-height: 1.8;
-      animation: fadeUp 2s ease;
+    .mensagem-fofa {
+      font-size: 1.6rem;
+      line-height: 1.5;
+      color: #444;
     }
 
-    .heart {
-      position: absolute;
-      color: rgba(255, 80, 80, 0.35);
-      font-size: 22px;
-      animation: float 10s linear infinite;
-      position: fixed;
-    }
-
-    .gallery {
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    .gallery h2 {
-      margin-bottom: 30px;
-      font-size: 2rem;
-    }
-
-    .slider {
-      width: 90%;
-      max-width: 800px;
-      height: 450px;
-      margin: auto;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+    /* Slideshow */
+    .slider-container {
+      width: 100%;
+      max-width: 500px;
+      height: 400px;
+      margin: 30px auto;
+      border: 10px solid white;
+      outline: 3px solid #ff80ab;
+      border-radius: 10px;
       position: relative;
+      overflow: hidden;
+      transform: rotate(2deg);
     }
 
     .slide {
@@ -84,147 +115,131 @@
       opacity: 1;
     }
 
+    /* Corações voando */
+    .heart {
+      position: fixed;
+      top: -10%;
+      z-index: 999;
+      user-select: none;
+      pointer-events: none;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
     footer {
       text-align: center;
-      padding: 40px 20px;
-      font-size: 1rem;
+      padding: 50px;
+      font-family: 'Indie Flower', cursive;
+      font-size: 1.5rem;
     }
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes float {
-      from {
-        transform: translateY(100vh) rotate(0deg);
-      }
-      to {
-        transform: translateY(-20vh) rotate(360deg);
-      }
-    }
-
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2rem;
-      }
-
-      .slider {
-        height: 280px;
-      }
+    @media (max-width: 600px) {
+      h1 { font-size: 2.5rem; }
+      .slider-container { height: 300px; }
     }
   </style>
 </head>
 <body>
 
-  <section id="intro" class="hero">
-    <h1>✨ Tenho uma surpresa para você ✨</h1>
-    <button onclick="abrirSurpresa()" style="margin-top:30px;padding:15px 30px;border:none;border-radius:50px;font-size:1.2rem;cursor:pointer;background:#ff6b9a;color:white;">Clique aqui 💖</button>
+  <!-- TELA INICIAL -->
+  <section id="intro" class="hero-inicial">
+    <h1 style="font-size: 2.5rem;">Psst... Mãe! <br> Eu fiz um desenho (e uma surpresa) pra você! 🎨</h1>
+    <button class="btn-surpresa" onclick="abrirSurpresa()">CLIQUE AQUI PRA VER! 💖</button>
   </section>
 
-  <div id="conteudo" style="display:none; max-width:1100px; margin:auto; padding:20px;">
-    <div style="display:flex; flex-wrap:wrap; gap:30px; align-items:center; justify-content:center; min-height:100vh;">
-      <div style="flex:1; min-width:320px;">
-
-  <section class="hero">
-    <h1>🌷 Feliz Dia das Mães 🌷</h1>
-    <p class="message">
-      Mãe, sua força inspira, seu carinho transforma, e seu amor faz do mundo um lugar melhor.
-      Hoje celebramos sua dedicação, sua ternura e tudo aquilo que você representa.
-      Obrigado por ser luz em cada momento.
-    </p>
-  </section>
-
-  </div>
-      <div style="flex:1; min-width:320px;">
-      <section class="gallery">
-    <h2>Nossos Momentos 💖</h2>
-    <div class="slider">
-      <img class="slide active" src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2" />
-      <img class="slide" src="https://images.unsplash.com/photo-1511895426328-dc8714191300" />
-      <img class="slide" src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9" />
-      <img class="slide" src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef" />
-    </div>
-  </section>
-
-  </div>
-
-        </div>
+  <!-- CONTEÚDO QUE APARECE -->
+  <div id="conteudo">
+    <div class="cartao-crianca">
+      <h1>Feliz Dia das Mães, Mamãe! 🌷</h1>
+      <p class="mensagem-fofa">
+        Oi mamãe! Eu queria dizer que você é a <b>melhor mãe de todo o universo</b> (e das outras galáxias também!). 🚀 <br><br>
+        Obrigado por me dar os melhores abraços do mundo, por cuidar de mim quando eu fico dodói e por ser tão linda. 
+        Você brilha mais que o sol! ✨ <br><br>
+        Eu te amo um milhão de vezes infinito! ❤️
+      </p>
     </div>
 
-  <footer>
-    Feito com amor ❤️
-  </footer>
+    <div class="slider-container" id="meuSlider">
+       <!-- As fotos vão entrar aqui pelo JavaScript -->
+    </div>
+
+    <footer>
+      Assinado: Seu filho(a) que te ama muito! 🧒🎈
+    </footer>
+  </div>
+
+  <audio id="musica" loop>
+    <source src="./assets/musica/trilha.mp3" type="audio/mpeg">
+  </audio>
 
   <script>
-    function abrirSurpresa() {
-      document.getElementById('intro').style.display = 'none';
-      document.getElementById('conteudo').style.display = 'block';
-    }
-
-    const slides = document.querySelectorAll('.slide');
-    let current = 0;
-
-    setInterval(() => {
-      slides[current].classList.remove('active');
-      current = (current + 1) % slides.length;
-      slides[current].classList.add('active');
-    }, 3000);
-
-    for (let i = 0; i < 20; i++) {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.innerHTML = '❤';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (Math.random() * 5 + 4) + 's';
-      heart.style.fontSize = (Math.random() * 20 + 15) + 'px';
-            heart.style.top = '100vh';
-      heart.style.zIndex = '999';
-      heart.style.pointerEvents = 'none';
-      document.body.appendChild(heart);
-    }
-  </script>
-
-  <script>
-    // Carrega automaticamente imagens da pasta ./assets/fotos/
-    // e música da pasta ./assets/musica/
-    // Para publicar, mantenha a estrutura:
-    // /assets/fotos/foto1.jpg
-    // /assets/fotos/foto2.png
-    // /assets/musica/trilha.mp3
-
-    const imageFiles = [
+    // Configurações das fotos
+    const fotos = [
       './assets/fotos/foto1.jpg',
       './assets/fotos/foto2.jpg',
       './assets/fotos/foto3.jpg',
       './assets/fotos/foto4.jpg'
     ];
 
-    const slider = document.querySelector('.slider');
-    slider.innerHTML = '';
+    function abrirSurpresa() {
+      // Esconde intro e mostra conteúdo
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('conteudo').style.display = 'block';
+      
+      // Toca a música
+      const audio = document.getElementById('musica');
+      audio.play().catch(e => console.log("O navegador bloqueou o som inicial."));
 
-    imageFiles.forEach((src, index) => {
+      // Inicia os corações
+      setInterval(createHeart, 300);
+    }
+
+    // Criar o Slider dinamicamente
+    const container = document.getElementById('meuSlider');
+    fotos.forEach((src, index) => {
       const img = document.createElement('img');
       img.src = src;
       img.className = index === 0 ? 'slide active' : 'slide';
-      slider.appendChild(img);
+      container.appendChild(img);
     });
 
-    const audio = document.createElement('audio');
-    audio.src = './assets/musica/trilha.mp3';
-    audio.autoplay = true;
-    audio.loop = true;
-    audio.controls = true;
-    audio.style.position = 'fixed';
-    audio.style.bottom = '20px';
-    audio.style.right = '20px';
-    document.body.appendChild(audio);
+    // Lógica do Slide Automático
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    
+    setInterval(() => {
+      if(slides.length > 0) {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+      }
+    }, 3000);
+
+    // Chuva de Corações e Estrelas
+    function createHeart() {
+      const heart = document.createElement('div');
+      const icons = ['❤️', '💖', '🌸', '✨', '⭐'];
+      heart.classList.add('heart');
+      heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+      heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+      heart.style.opacity = Math.random();
+      
+      document.body.appendChild(heart);
+      
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
   </script>
 </body>
 </html>
