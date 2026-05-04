@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PARA A MELHOR MAMÃE DO MUNDO!</title>
+  <title>DIA DAS MÃES - UMA CELEBRAÇÃO ESPECIAL</title>
+  <!-- Fontes Tradicionais e Elegantes -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
   
   <style>
@@ -14,9 +15,9 @@
     }
 
     body {
-      background-color: #e0f7fa; 
-      background-image: radial-gradient(#b2ebf2 0.5px, transparent 0.5px);
-      background-size: 20px 20px;
+      background-color: #eefafb; /* Azul esverdeado bem clarinho e delicado */
+      background-image: radial-gradient(#c2e9eb 1px, transparent 1px);
+      background-size: 30px 30px;
       color: #00796b;
       font-family: 'Lato', sans-serif;
       overflow-x: hidden;
@@ -34,21 +35,28 @@
       padding: 20px;
     }
 
+    .hero-inicial h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: #00796b;
+      margin-bottom: 20px;
+      animation: fadeIn 2s ease;
+    }
+
     .btn-surpresa {
-      margin-top: 30px;
-      padding: 18px 35px;
+      padding: 20px 40px;
       border: 2px solid #4db6ac;
-      border-radius: 4px;
-      font-size: 1.2rem;
-      font-family: 'Lato', sans-serif;
+      border-radius: 50px;
+      font-size: 1.1rem;
       text-transform: uppercase;
       letter-spacing: 2px;
       font-weight: bold;
       cursor: pointer;
-      background: transparent;
+      background: white;
       color: #00897b;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      animation: pulseBtn 2s infinite;
       transition: all 0.3s;
-      animation: pulseBtn 2s infinite; /* Animação de pulso */
     }
 
     @keyframes pulseBtn {
@@ -60,60 +68,56 @@
     .btn-surpresa:hover {
       background: #4db6ac;
       color: white;
-      animation: none;
     }
 
     /* Conteúdo Principal */
     #conteudo {
       display: none;
-      padding: 10px;
-      max-width: 900px;
+      padding: 20px;
+      max-width: 800px;
       margin: auto;
+      text-align: center;
     }
 
     .cartao-crianca {
       background: white;
-      padding: 40px; 
-      border: 1px solid #b2ebf2;
-      border-radius: 8px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-      margin: 30px auto; 
-      max-width: 600px; 
-      animation: slideUp 1.2s ease-out; /* Entrada animada */
+      padding: 45px 30px; 
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.06);
+      margin: 40px auto; 
+      animation: popIn 1.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+      border: 1px solid #e0f2f1;
     }
 
-    @keyframes slideUp {
-      from { opacity: 0; transform: translateY(50px); }
-      to { opacity: 1; transform: translateY(0); }
+    @keyframes popIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
     h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 2.5rem; 
-      margin-bottom: 20px;
+      font-size: 2.8rem; 
       color: #00796b;
-      text-align: center;
+      margin-bottom: 25px;
     }
 
     .mensagem-fofa {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       line-height: 1.8;
       color: #333;
-      text-align: center;
     }
 
-    /* Slideshow com moldura comemorativa */
+    /* Slideshow Tradicional */
     .slider-container {
       width: 100%;
-      max-width: 450px; 
-      height: 400px; 
-      margin: 30px auto;
-      border: 12px solid white;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-      border-radius: 4px;
+      max-width: 480px; 
+      height: 480px; 
+      margin: 40px auto;
+      border: 15px solid white;
+      box-shadow: 0 15px 45px rgba(0,0,0,0.15);
       position: relative;
       overflow: hidden;
-      animation: fadeIn 2s ease-in;
+      border-radius: 4px;
     }
 
     .slide {
@@ -122,36 +126,30 @@
       height: 100%;
       object-fit: cover;
       opacity: 0;
-      transition: opacity 1.5s ease-in-out;
+      transition: opacity 1.2s ease-in-out;
     }
 
-    .slide.active {
-      opacity: 1;
-    }
+    .slide.active { opacity: 1; }
 
-    /* Confetes e Elementos Festivos */
-    .confetti {
+    /* Partículas de Comemoração */
+    .party {
       position: fixed;
-      width: 10px;
-      height: 10px;
       z-index: 1000;
-      animation: confettiFall linear forwards;
+      pointer-events: none;
+      animation: fallDown linear forwards;
     }
 
-    .heart {
-      position: fixed;
-      top: -10%;
-      z-index: 999;
-      animation: fall linear forwards;
-    }
-
-    @keyframes confettiFall {
+    @keyframes fallDown {
       0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
       100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
     }
 
-    @keyframes fall {
-      to { transform: translateY(110vh) rotate(360deg); }
+    footer {
+      margin: 60px 0;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      color: #00796b;
     }
 
     @keyframes fadeIn {
@@ -159,20 +157,10 @@
       to { opacity: 1; }
     }
 
-    footer {
-      text-align: center;
-      padding: 30px;
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1.2rem;
-      color: #00796b;
-      animation: fadeIn 3s;
-    }
-
     @media (max-width: 600px) {
-      .cartao-crianca { width: 90%; padding: 30px 20px; }
-      h1 { font-size: 2rem; }
-      .slider-container { height: 350px; }
+      h1 { font-size: 2.2rem; }
+      .cartao-crianca { padding: 35px 20px; width: 95%; }
+      .slider-container { height: 380px; max-width: 95%; }
     }
   </style>
 </head>
@@ -180,25 +168,27 @@
 
   <!-- TELA INICIAL -->
   <section id="intro" class="hero-inicial">
-    <h1 style="font-family: 'Playfair Display', serif;">Para a melhor mãe do mundo</h1>
-    <button class="btn-surpresa" onclick="abrirSurpresa()">Abrir Celebração</button>
+    <h1>Uma homenagem para o seu dia</h1>
+    <button class="btn-surpresa" onclick="abrirSurpresa()">Clique para celebrar ✨</button>
   </section>
 
-  <!-- CONTEÚDO QUE APARECE -->
+  <!-- CONTEÚDO PRINCIPAL -->
   <div id="conteudo">
     <div class="cartao-crianca">
-      <h1>Feliz Dia das Mães! ✨</h1>
+      <h1>Feliz Dia das Mães!</h1>
       <p class="mensagem-fofa">
-        Oi, mamãe! Eu fiz essa página para dizer que você é a <b>melhor mãe do mundo inteiro!</b> 🌍 <br><br>
-        Obrigado por sempre me ajudar, por jogar comigo e por ser tão carinhosa. 
-        Você é meu grande exemplo! Te amo mil milhões! ❤️
+        Hoje é um dia muito especial para celebrar todo o amor e carinho que você nos dá. <br><br>
+        Ser mãe é cuidar, proteger e ensinar com o coração. Obrigado por ser essa pessoa tão maravilhosa e por tornar todos os nossos dias mais felizes. <br><br>
+        Você merece todo o amor do mundo hoje e sempre! ❤️
       </p>
     </div>
 
-    <div class="slider-container" id="meuSlider"></div>
+    <div class="slider-container" id="meuSlider">
+        <!-- Fotos carregadas via JS -->
+    </div>
 
     <footer>
-      Com todo o meu amor, do seu filho(a).
+      Com muito carinho e amor! 🌼
     </footer>
   </div>
 
@@ -207,6 +197,7 @@
   </audio>
 
   <script>
+    // Configurações das fotos
     const fotos = [
       './assets/fotos/foto1.jpg',
       './assets/fotos/foto2.jpg',
@@ -219,11 +210,10 @@
       document.getElementById('conteudo').style.display = 'block';
       
       const audio = document.getElementById('musica');
-      audio.play().catch(e => console.log("Áudio aguardando interação."));
+      audio.play().catch(e => console.log("Áudio aguardando interação"));
 
-      // Inicia chuvas festivas
-      setInterval(createHeart, 400);
-      setInterval(createConfetti, 100);
+      // Chuva comemorativa de corações e confetes
+      setInterval(createCelebrationItem, 200);
     }
 
     const container = document.getElementById('meuSlider');
@@ -244,31 +234,30 @@
       }
     }, 3500);
 
-    function createHeart() {
-      const heart = document.createElement('div');
-      const icons = ['❤️', '✨', '🌼', '🌸'];
-      heart.classList.add('heart');
-      heart.innerHTML = icons[Math.floor(Math.random() * icons.length)];
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.fontSize = Math.random() * 15 + 10 + 'px';
-      heart.style.animationDuration = Math.random() * 3 + 4 + 's';
-      heart.style.opacity = Math.random() * 0.7 + 0.3;
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 7000);
-    }
+    function createCelebrationItem() {
+      const item = document.createElement('div');
+      const icons = ['❤️', '✨', '🌸', '🌼', '⭐'];
+      const colors = ['#4db6ac', '#80cbc4', '#b2ebf2', '#FFD700'];
+      
+      item.classList.add('party');
+      
+      // Alterna entre ícones e quadradinhos de papel picado
+      if (Math.random() > 0.5) {
+        item.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+        item.style.fontSize = Math.random() * 15 + 10 + 'px';
+      } else {
+        item.style.width = '10px';
+        item.style.height = '10px';
+        item.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      }
 
-    function createConfetti() {
-      const confetti = document.createElement('div');
-      const colors = ['#4db6ac', '#80cbc4', '#b2ebf2', '#ffffff', '#00796b'];
-      confetti.classList.add('confetti');
-      confetti.style.left = Math.random() * 100 + 'vw';
-      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-      confetti.style.width = Math.random() * 8 + 5 + 'px';
-      confetti.style.height = confetti.style.width;
-      confetti.style.animationDuration = Math.random() * 2 + 2 + 's';
-      confetti.style.opacity = Math.random();
-      document.body.appendChild(confetti);
-      setTimeout(() => confetti.remove(), 4000);
+      item.style.left = Math.random() * 100 + 'vw';
+      item.style.top = '-20px';
+      item.style.animationDuration = Math.random() * 3 + 3 + 's';
+      item.style.opacity = Math.random() * 0.8 + 0.2;
+      
+      document.body.appendChild(item);
+      setTimeout(() => item.remove(), 6000);
     }
   </script>
 </body>
