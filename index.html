@@ -67,25 +67,25 @@
 
     .cartao-crianca {
       background: white;
-      padding: 20px; /* Reduzi o padding interno */
+      padding: 30px; /* Aumentei o respiro interno */
       border: 3px solid #80cbc4;
       border-radius: 20px;
-      box-shadow: 6px 6px 0px #b2ebf2;
-      margin: 15px auto; /* Margens menores para subir o conteúdo */
-      max-width: 500px;
+      box-shadow: 8px 8px 0px #b2ebf2;
+      margin: 20px auto; 
+      max-width: 600px; /* Aumentei a largura máxima do cartão */
     }
 
     h1 {
       font-family: 'Indie Flower', cursive;
-      font-size: 2.2rem; /* Tamanho menor para o título */
-      margin-bottom: 10px;
+      font-size: 2.8rem; /* Título um pouco maior */
+      margin-bottom: 15px;
       color: #009688;
       text-align: center;
     }
 
     .mensagem-fofa {
-      font-size: 1.1rem; /* Texto levemente menor para economizar espaço */
-      line-height: 1.4;
+      font-size: 1.3rem; /* Fonte da mensagem aumentada para destaque */
+      line-height: 1.5;
       color: #444;
       text-align: center;
     }
@@ -93,9 +93,9 @@
     /* Slideshow */
     .slider-container {
       width: 100%;
-      max-width: 350px; /* Reduzi a largura máxima para mobile */
-      height: 350px; /* Altura fixa proporcional */
-      margin: 15px auto;
+      max-width: 400px; /* Aumentei levemente para equilibrar com o cartão */
+      height: 380px; 
+      margin: 20px auto;
       border: 8px solid white;
       outline: 3px solid #80cbc4;
       border-radius: 10px;
@@ -138,17 +138,20 @@
 
     footer {
       text-align: center;
-      padding: 20px;
+      padding: 25px;
       font-family: 'Indie Flower', cursive;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
     }
 
-    /* Ajustes específicos para telas muito pequenas */
-    @media (max-width: 400px) {
-      h1 { font-size: 1.8rem; }
-      .mensagem-fofa { font-size: 1rem; }
-      .slider-container { height: 280px; }
-      .btn-surpresa { padding: 15px 30px; font-size: 1.2rem; }
+    /* Ajustes específicos para telas de celular */
+    @media (max-width: 600px) {
+      .cartao-crianca {
+        width: 95%;
+        padding: 25px;
+      }
+      h1 { font-size: 2.2rem; }
+      .mensagem-fofa { font-size: 1.15rem; }
+      .slider-container { height: 320px; max-width: 90%; }
     }
   </style>
 </head>
@@ -165,7 +168,7 @@
     <div class="cartao-crianca">
       <h1>Feliz Dia das Mães! 🌼</h1>
       <p class="mensagem-fofa">
-        Oi, mamãe! Eu fiz essa página para dizer que você é a <b>melhor mãe do mundo inteiro!</b> 🌍 <br>
+        Oi, mamãe! Eu fiz essa página para dizer que você é a <b>melhor mãe do mundo inteiro!</b> 🌍 <br><br>
         Obrigado por sempre me ajudar, por jogar comigo e por ser tão carinhosa. 
         Você é meu exemplo! Te amo mil milhões! ❤️
       </p>
