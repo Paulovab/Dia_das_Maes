@@ -14,7 +14,6 @@
     }
 
     body {
-      /* Modificado: gradiente removido ou tornado transparente para máxima nitidez */
       background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('./assets/fotos/foto8.jpg');
       background-size: cover;
       background-position: center;
@@ -38,7 +37,6 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      /* Modificado: background rgba reduzido para 0.4 para a foto aparecer com clareza */
       background: rgba(255, 255, 255, 0.4); 
       padding: 20px;
       position: fixed;
@@ -95,7 +93,6 @@
       font-size: 2.2rem;
       margin-bottom: 20px;
       line-height: 1.2;
-      /* Adicionado: sombra leve para garantir leitura sobre o fundo nítido */
       text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
     }
 
@@ -107,7 +104,7 @@
 
     .slider-container {
       width: 100%;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 1 / 1; /* Mantém o quadro sempre quadrado */
       max-width: 450px;
       margin: 0 auto 30px auto;
       background: #fff;
@@ -115,17 +112,17 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
       position: relative;
       overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       border-radius: 10px;
     }
 
     .slide {
       position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover; 
+      top: 0;
+      left: 0;
+      width: 100%; /* Preenche toda a largura do quadro */
+      height: 100%; /* Preenche toda a altura do quadro */
+      object-fit: cover; /* Faz a foto cobrir o espaço sem distorcer, cortando as bordas se necessário */
+      object-position: center; /* Centraliza a foto no corte */
       opacity: 0;
       transition: opacity 1s ease-in-out;
     }
