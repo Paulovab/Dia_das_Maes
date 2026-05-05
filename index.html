@@ -14,8 +14,8 @@
     }
 
     body {
-      /* Fundo com foto4.jpg */
-      background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url('./assets/fotos/foto8.jpg');
+      /* Modificado: gradiente removido ou tornado transparente para máxima nitidez */
+      background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('./assets/fotos/foto8.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -38,7 +38,8 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      background: rgba(255, 255, 255, 0.9); 
+      /* Modificado: background rgba reduzido para 0.4 para a foto aparecer com clareza */
+      background: rgba(255, 255, 255, 0.4); 
       padding: 20px;
       position: fixed;
       z-index: 2000;
@@ -94,6 +95,8 @@
       font-size: 2.2rem;
       margin-bottom: 20px;
       line-height: 1.2;
+      /* Adicionado: sombra leve para garantir leitura sobre o fundo nítido */
+      text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
     }
 
     .mensagem-fofa {
@@ -183,7 +186,6 @@
   </audio>
 
   <script>
-    // Agora o slide busca da foto1 até a foto10
     const fotos = [];
     for (let i = 1; i <= 10; i++) {
       fotos.push(`./assets/fotos/foto${i}.jpg`);
@@ -204,7 +206,6 @@
       const img = document.createElement('img');
       img.src = src;
       img.className = index === 0 ? 'slide active' : 'slide';
-      // Tratamento para caso alguma foto (ex: 5 a 10) não exista na pasta
       img.onerror = function() { this.remove(); }; 
       container.appendChild(img);
     });
